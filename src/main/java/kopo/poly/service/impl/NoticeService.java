@@ -28,16 +28,6 @@ public class NoticeService implements INoticeService {
         return noticeMapper.getNoticeList();
 
     }
-
-    @Transactional
-    @Override
-    public void InsertNoticeInfo(NoticeDTO pDTO) throws Exception {
-
-        log.info(this.getClass().getName() + ".InsertNoticeInfo start!");
-
-        noticeMapper.InsertNoticeInfo(pDTO);
-    }
-
     @Transactional
     @Override
     public NoticeDTO getNoticeInfo(NoticeDTO pDTO) throws Exception {
@@ -50,6 +40,15 @@ public class NoticeService implements INoticeService {
 
         return noticeMapper.getNoticeInfo(pDTO);
 
+    }
+
+    @Transactional
+    @Override
+    public void InsertNoticeInfo(NoticeDTO pDTO) throws Exception {
+
+        log.info(this.getClass().getName() + ".InsertNoticeInfo start!");
+
+        noticeMapper.InsertNoticeInfo(pDTO);
     }
 
     @Transactional
