@@ -4,30 +4,42 @@ import kopo.poly.dto.NoticeDTO;
 
 import java.util.List;
 
+
 public interface INoticeService {
 
     /**
-     * 공지사항 리스트
+     * 공지시항 리스트
+     *
+     * @return 조회 경과
      */
     List<NoticeDTO> getNoticeList() throws Exception;
 
     /**
-     * 공지사항 상세 내역 조회(조회되는 레코드는 1개)
+     * 공지시항 상세보기
+     *
+     * @param pDTO 상세내용 조회할 noticeSeq 값
+     * @return 조회 경과
      */
     NoticeDTO getNoticeInfo(NoticeDTO pDTO) throws Exception;
-    
-    /**
-     * 공지사항 등록
-     */
-    void InsertNoticeInfo(NoticeDTO pDTO) throws Exception;
 
     /**
-     * 공지사항 수정
+     * 공지시항 등록
+     *
+     * @param pDTO 화면에서 입력된 공지사항 입력된 값들
+     */
+    void insertNoticeInfo(NoticeDTO pDTO) throws Exception;
+
+    /**
+     * 공지시항 수정
+     *
+     * @param pDTO 화면에서 입력된 수정되기 위한 공지사항 입력된 값들
      */
     void updateNoticeInfo(NoticeDTO pDTO) throws Exception;
 
     /**
-     * 공지사항 삭제
+     * 공지시항 삭제
+     *
+     * @param pDTO 삭제할 noticeSeq 값
      */
     void deleteNoticeInfo(NoticeDTO pDTO) throws Exception;
 

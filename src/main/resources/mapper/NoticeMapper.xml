@@ -27,16 +27,14 @@
 	</insert>
 	
 	<!-- 게시판 상세보기 쿼리 -->
-	<select id="getNoticeInfo" resultType="NoticeDTO">
+	<select id="getNoticeInfo" parameterType="NoticeDTO" resultType="NoticeDTO">
 		SELECT N.NOTICE_SEQ, N.TITLE, N.NOTICE_YN, N.READ_CNT, U.USER_NAME, N.USER_ID,
 			   CONTENTS, DATE_FORMAT(N.REG_DT, '%Y-%m-%d') AS REG_DT
 	      FROM NOTICE N, USER_INFO U
 	     WHERE N.USER_ID = U.USER_ID 
 	       AND N.NOTICE_SEQ = #{notice_seq}
 	</select>
-	
 
-	
 	<!-- 조회수 증가 쿼리 -->
 	<update id="updateNoticeReadCnt" parameterType="NoticeDTO">
 		UPDATE NOTICE SET
@@ -66,3 +64,4 @@
 	</delete>
 			
 </mapper>
+

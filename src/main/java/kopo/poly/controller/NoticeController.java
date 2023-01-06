@@ -134,7 +134,7 @@ public class NoticeController {
             /*
              * 게시글 등록하기위한 비즈니스 로직을 호출
              */
-            noticeService.InsertNoticeInfo(pDTO);
+            noticeService.insertNoticeInfo(pDTO);
 
             // 저장이 완료되면 사용자에게 보여줄 메시지
             msg = "등록되었습니다.";
@@ -206,12 +206,20 @@ public class NoticeController {
 
         String nSeq = CmmUtil.nvl(request.getParameter("nSeq")); // 공지글번호(PK)
 
+        /*
+         * ####################################################################################
+         * 반드시, 값을 받았으면, 꼭 로그를 찍어서 값이 제대로 들어오는지 파악해야함 반드시 작성할 것
+         * ####################################################################################
+         */
         log.info("nSeq : " + nSeq);
 
+        /*
+         * 값 전달은 반드시 DTO 객체를 이용해서 처리함 전달 받은 값을 DTO 객체에 넣는다.
+         */
         NoticeDTO pDTO = new NoticeDTO();
-
         pDTO.setNotice_seq(nSeq);
 
+        // 공지사항 수정보기를 위해 공지사항 상세정보 가져오기
         NoticeDTO rDTO = noticeService.getNoticeInfo(pDTO);
 
         if (rDTO == null) {
@@ -247,6 +255,11 @@ public class NoticeController {
             String notice_yn = CmmUtil.nvl(request.getParameter("notice_yn")); // 공지글 여부
             String contents = CmmUtil.nvl(request.getParameter("contents")); // 내용
 
+            /*
+             * ####################################################################################
+             * 반드시, 값을 받았으면, 꼭 로그를 찍어서 값이 제대로 들어오는지 파악해야함 반드시 작성할 것
+             * ####################################################################################
+             */
             log.info("user_id : " + user_id);
             log.info("nSeq : " + nSeq);
             log.info("title : " + title);
@@ -254,7 +267,6 @@ public class NoticeController {
             log.info("contents : " + contents);
 
             NoticeDTO pDTO = new NoticeDTO();
-
             pDTO.setUser_id(user_id);
             pDTO.setNotice_seq(nSeq);
             pDTO.setTitle(title);
@@ -299,10 +311,17 @@ public class NoticeController {
         try {
             String nSeq = CmmUtil.nvl(request.getParameter("nSeq")); // 글번호(PK)
 
+            /*
+             * ####################################################################################
+             * 반드시, 값을 받았으면, 꼭 로그를 찍어서 값이 제대로 들어오는지 파악해야함 반드시 작성할 것
+             * ####################################################################################
+             */
             log.info("nSeq : " + nSeq);
 
+            /*
+             * 값 전달은 반드시 DTO 객체를 이용해서 처리함 전달 받은 값을 DTO 객체에 넣는다.
+             */
             NoticeDTO pDTO = new NoticeDTO();
-
             pDTO.setNotice_seq(nSeq);
 
             // 게시글 삭제하기 DB
@@ -326,5 +345,5 @@ public class NoticeController {
 
         return dto;
     }
-
 }
+

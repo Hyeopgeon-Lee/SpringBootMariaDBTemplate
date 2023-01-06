@@ -11,3 +11,4 @@ public class MsgDTO {
 
     private String msg;
 }
+
