@@ -18,9 +18,10 @@ public interface INoticeService {
      * 공지시항 상세보기
      *
      * @param pDTO 상세내용 조회할 noticeSeq 값
+     * @param type 조회수 증가여부(수정보기는 조회수 증가하지 않음)
      * @return 조회 경과
      */
-    NoticeDTO getNoticeInfo(NoticeDTO pDTO) throws Exception;
+    NoticeDTO getNoticeInfo(NoticeDTO pDTO, boolean type) throws Exception;
 
     /**
      * 공지시항 등록

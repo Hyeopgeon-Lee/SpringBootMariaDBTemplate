@@ -22,44 +22,44 @@
 			)
 		VALUES(
 			(SELECT NULLIF (MAX(A.NOTICE_SEQ),0)+1 FROM NOTICE A),
-			#{title}, #{notice_yn}, #{contents}, #{user_id}, 0, #{user_id}, SYSDATE(), #{user_id}, SYSDATE()
+			#{title}, #{noticeYn}, #{contents}, #{userId}, 0, #{userId}, SYSDATE(), #{userId}, SYSDATE()
 		)
 	</insert>
 	
 	<!-- 게시판 상세보기 쿼리 -->
-	<select id="getNoticeInfo" parameterType="NoticeDTO" resultType="NoticeDTO">
+	<select id="getNoticeInfo" resultType="NoticeDTO">
 		SELECT N.NOTICE_SEQ, N.TITLE, N.NOTICE_YN, N.READ_CNT, U.USER_NAME, N.USER_ID,
 			   CONTENTS, DATE_FORMAT(N.REG_DT, '%Y-%m-%d') AS REG_DT
 	      FROM NOTICE N, USER_INFO U
 	     WHERE N.USER_ID = U.USER_ID 
-	       AND N.NOTICE_SEQ = #{notice_seq}
+	       AND N.NOTICE_SEQ = #{noticeSeq}
 	</select>
-
+	
 	<!-- 조회수 증가 쿼리 -->
 	<update id="updateNoticeReadCnt" parameterType="NoticeDTO">
 		UPDATE NOTICE SET
 			READ_CNT = READ_CNT + 1
 		WHERE
-			NOTICE_SEQ = #{notice_seq}		
+			NOTICE_SEQ = #{noticeSeq}
 	</update>
 
 	<!-- 게시판 수정 쿼리 -->
 	<update id="updateNoticeInfo" parameterType="NoticeDTO">
 		UPDATE NOTICE SET
 			TITLE = #{title},
-			NOTICE_YN = #{notice_yn},
+			NOTICE_YN = #{noticeYn},
 			CONTENTS = #{contents},
-			CHG_ID = #{user_id},
+			CHG_ID = #{userId},
 			CHG_DT = SYSDATE()
 		WHERE
-			NOTICE_SEQ = #{notice_seq}	
+			NOTICE_SEQ = #{noticeSeq}
 			
 	</update>
 
 	<!-- 게시판 삭제 쿼리 -->
 	<delete id="deleteNoticeInfo" parameterType="NoticeDTO">
 		DELETE FROM NOTICE
-		WHERE NOTICE_SEQ = #{notice_seq}	
+		WHERE NOTICE_SEQ = #{noticeSeq}
 			
 	</delete>
 			
