@@ -51,7 +51,7 @@ public class NoticeService implements INoticeService {
 
         log.info(this.getClass().getName() + ".InsertNoticeInfo start!");
 
-        noticeMapper.InsertNoticeInfo(pDTO);
+        noticeMapper.insertNoticeInfo(pDTO);
     }
 
     @Transactional
