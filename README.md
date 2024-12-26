@@ -54,21 +54,18 @@ spring:
     url: jdbc:mariadb://localhost:3306/your_database
     username: your_username
     password: your_password
-  jpa:
-    hibernate:
-      ddl-auto: update
 ```
 
 ### 3. 의존성 설치 및 빌드
-- Gradle을 사용하여 의존성을 설치하고 애플리케이션을 빌드합니다.
+- Maven을 사용하여 의존성을 설치하고 애플리케이션을 빌드합니다.
 ```bash
-./gradlew build
+mvn clean install
 ```
 
 ### 4. 애플리케이션 실행
 - 아래 명령어를 실행하여 애플리케이션을 시작합니다.
 
 ```bash
-./gradlew bootRun
+mvn spring-boot:run
 ```
 
